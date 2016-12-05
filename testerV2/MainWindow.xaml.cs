@@ -26,7 +26,7 @@ namespace testerV2
             dlg.DefaultExt = ".exe";
             dlg.Filter = "Executable files| *.exe";
             dlg.InitialDirectory = _workingDirectory;
-            Nullable<bool> result = dlg.ShowDialog();
+            var result = dlg.ShowDialog();
             if (result == true)
             {
                 _testingExe = dlg.FileName;
