@@ -41,7 +41,7 @@ namespace testerV2
             dlg.DefaultExt = ".txt";
             dlg.Filter = "Text files| *.txt";
             dlg.InitialDirectory = _workingDirectory;
-            Nullable<bool> result = dlg.ShowDialog();
+            var result = dlg.ShowDialog();
             if (result == true)
             {
                 _testingTxt = dlg.FileName;
