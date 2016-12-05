@@ -55,7 +55,7 @@ namespace testerV2
             {
                 using (StreamReader sr = new StreamReader(_testingTxt))
                 {
-                    String text = sr.ReadToEnd();
+                    string text = sr.ReadToEnd();
                     inputBox.Text = text;
                     inputBox.TextAlignment = TextAlignment.Left;
                 }
@@ -89,7 +89,7 @@ namespace testerV2
                     using (program = Process.Start(startInfo))
                     {
                         StreamWriter input = program?.StandardInput;
-                        string inputText = File.ReadAllText(_testingTxt);
+                        var inputText = File.ReadAllText(_testingTxt);
                         input?.Write(inputText);
                         input?.Close();
                         StreamReader reader = program?.StandardOutput;
