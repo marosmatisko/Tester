@@ -30,7 +30,7 @@ namespace testerV2
             if (result == true)
             {
                 _testingExe = dlg.FileName;
-                programLabel.Content = "Program: " + Path.GetFileName(_testingExe);  
+                ProgramLabel.Content = "Program: " + Path.GetFileName(_testingExe);  
             }
         }
 
@@ -45,7 +45,7 @@ namespace testerV2
             if (result == true)
             {
                 _testingTxt = dlg.FileName;
-                inputLabel.Content = "Vstup: " + Path.GetFileName(_testingTxt);
+                InputLabel.Content = "Vstup: " + Path.GetFileName(_testingTxt);
             }
         }
 
@@ -56,12 +56,12 @@ namespace testerV2
                 using (StreamReader sr = new StreamReader(_testingTxt))
                 {
                     string text = sr.ReadToEnd();
-                    inputBox.Text = text;
-                    inputBox.TextAlignment = TextAlignment.Left;
+                    InputBox.Text = text;
+                    InputBox.TextAlignment = TextAlignment.Left;
                 }
 
                 
-                outputBox.Text = RunTestingExe;
+                OutputBox.Text = RunTestingExe;
 
             }
             catch (Exception exc)
@@ -89,7 +89,7 @@ namespace testerV2
                     using (program = Process.Start(startInfo))
                     {
                         StreamWriter input = program?.StandardInput;
-                        var inputText = File.ReadAllText(_testingTxt);
+                        string inputText = File.ReadAllText(_testingTxt);
                         input?.Write(inputText);
                         input?.Close();
                         StreamReader reader = program?.StandardOutput;
@@ -98,6 +98,7 @@ namespace testerV2
                         return (result);
                     }
                 }
+
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
@@ -108,17 +109,17 @@ namespace testerV2
 
         private void clearButton_Click(object sender, RoutedEventArgs e)
         {
-            inputBox.Text = "Input";
-            inputBox.TextAlignment = TextAlignment.Center;
-            outputBox.Text = "Output";
-            outputBox.TextAlignment = TextAlignment.Center;
+            InputBox.Text = "Input";
+            InputBox.TextAlignment = TextAlignment.Center;
+            OutputBox.Text = "Output";
+            OutputBox.TextAlignment = TextAlignment.Center;
         }
 
         private void exportButton_Click(object sender, RoutedEventArgs e)
         {
             using (StreamWriter sw = File.CreateText(_workingDirectory + "output.txt"))
             {
-                sw.Write(outputBox.Text);
+                sw.Write(OutputBox.Text);
             }
         }
     }
