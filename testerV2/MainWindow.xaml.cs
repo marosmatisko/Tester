@@ -59,10 +59,7 @@ namespace testerV2
                     InputBox.Text = text;
                     InputBox.TextAlignment = TextAlignment.Left;
                 }
-
-                
                 OutputBox.Text = RunTestingExe;
-
             }
             catch (Exception exc)
             {
@@ -98,7 +95,6 @@ namespace testerV2
                         return (result);
                     }
                 }
-
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
